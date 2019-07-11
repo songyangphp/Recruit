@@ -12,7 +12,6 @@
 // [ 应用入口文件 ]
 
 // 定义应用目录
-echo "<pre>";
 define('APP_PATH', __DIR__ . '/../application/');
 // 绑定当前访问到index模块
 define('BIND_MODULE','index');

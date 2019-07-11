@@ -1,0 +1,140 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>系统登录</title>
+    <link href="__CSS__/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <link href="__CSS__/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="__JS__/jquery1.42.min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.SuperSlide.js"></script>
+    <script type="text/javascript" src="__JS__/Validform_v5.3.2_min.js"></script>
+    <style>
+        .btn-login{ width:242px; height:38px; background:url("__IMAGE__/login-btn.png") no-repeat; border:none; margin-top:5px;}
+        #o-box-down {
+            padding: 0 0 0 40px;
+        }
+    </style>
+
+    <script>
+        $(function(){
+
+            $(".i-text").focus(function(){
+                $(this).addClass('h-light');
+            });
+
+            $(".i-text").focusout(function(){
+                $(this).removeClass('h-light');
+            });
+
+            $("#username").focus(function(){
+                var username = $(this).val();
+                if(username=='输入账号'){
+                    $(this).val('');
+                }
+            });
+
+            $("#username").focusout(function(){
+                var username = $(this).val();
+                if(username==''){
+                    $(this).val('输入账号');
+                }
+            });
+
+
+            $("#password").focus(function(){
+                var username = $(this).val();
+                if(username=='输入密码'){
+                    $(this).val('');
+                }
+            });
+
+
+            $("#yzm").focus(function(){
+                var username = $(this).val();
+                if(username=='输入验证码'){
+                    $(this).val('');
+                }
+            });
+
+            $("#yzm").focusout(function(){
+                var username = $(this).val();
+                if(username==''){
+                    $(this).val('输入验证码');
+                }
+            });
+
+            /*$(".registerform").Validform({
+                tiptype:function(msg,o,cssctl){
+                    var objtip=$(".error-box");
+                    cssctl(objtip,o.type);
+                    objtip.text(msg);
+                },
+                ajaxPost:true
+            });*/
+
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <h1 class="headerLogo"><a title="后台管理系统" target="_blank" href="#"><img alt="logo" src="__IMAGE__/logo.gif" /></a></h1>
+    <div class="headerNav">
+        <a target="_blank" href="#">企业官网</a>
+        <a target="_blank" href="#">关于我们</a>
+        <a target="_blank" href="#">开发团队</a>
+        <a target="_blank" href="#">意见反馈</a>
+        <a target="_blank" href="#">帮助</a>
+    </div>
+</div>
+<div class="banner">
+    <div class="login-aside">
+        <div id="o-box-up"></div>
+        <div id="o-box-down" style="table-layout:fixed;">
+            <div class="error-box"></div>
+            <form class="registerform" action="{:url('register')}" method="post">
+                <div class="fm-item">
+                    <label for="logonId" class="form-label">身份证号：</label>
+                    <input type="text"  maxlength="100" id="username" name="username" class="i-text" datatype="s6-18" errormsg="用户名至少6个字符,最多18个字符！" required />
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="fm-item">
+                    <label for="logonId" class="form-label">登陆密码：</label>
+                    <input type="password" value="" maxlength="100" id="password" name="password" class="i-text" datatype="*6-16"  errormsg="密码范围在6~16位之间！"  required />
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="fm-item">
+                    <label for="logonId" class="form-label">确认密码：</label>
+                    <input type="password" value="" maxlength="100" id="repassword" name="repassword" class="i-text" datatype="*6-16"  errormsg="密码范围在6~16位之间！"  required />
+                    <div class="ui-form-explain"></div>
+                </div>
+                <div class="fm-item pos-r">
+                    <label for="logonId" class="form-label">验证码</label>
+                    <input type="text"  maxlength="100" name="yzm" id="yzm" class="i-text yzm" required />
+                    <div class="ui-form-explain">
+                        <img src="__IMAGE__/yzm.jpg" class="yzm-img" />
+                    </div>
+                </div>
+                <div class="fm-item">
+                    <label for="logonId" class="form-label"></label>
+                    <input type="submit" value="" tabindex="4" id="send-btn" class="btn-login" />
+                    <div class="ui-form-explain"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bd">
+        <ul>
+            <li style="background:url(__IMAGE__/theme-pic1.jpg) #CCE1F3 center 0 no-repeat;"><a target="_blank" ></a></li>
+            <li style="background:url(__IMAGE__/theme-pic2.jpg) #BCE0FF center 0 no-repeat;"><a target="_blank" ></a></li>
+        </ul>
+    </div>
+    <div class="hd">
+        <ul></ul>
+    </div>
+</div>
+<script type="text/javascript">jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+<div class="banner-shadow"></div>
+<div class="footer">
+    <p>Copyright &copy; 2014.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+</div>
+</body>
+</html>

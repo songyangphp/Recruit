@@ -9,7 +9,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-return [
+$config = [
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
@@ -143,7 +143,15 @@ return [
     ],
 
     // 视图输出字符串内容替换
-    'view_replace_str'       => [],
+    'view_replace_str'       => [
+        '__ROOT__' => WEB_HOST,
+        '__JS__' => WEB_HOST . 'static/js',
+        '__CSS__' => WEB_HOST . 'static/css',
+        '__IMAGE__' => WEB_HOST . 'static/image',
+        '__UPLOAD__'=> WEB_HOST . 'upload',
+    ],
+
+
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     'dispatch_error_tmpl'    => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
@@ -241,3 +249,5 @@ return [
         'list_rows' => 15,
     ],
 ];
+
+return $config;

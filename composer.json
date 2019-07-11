@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": ">=7.0",
-        "topthink/framework": "5.0.*"
+        "topthink/framework": "5.0.*",
+        "topthink/think-captcha" : ">=0.0.1"
     },
     "autoload": {
         "psr-4": {
