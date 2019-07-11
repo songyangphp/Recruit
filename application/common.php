@@ -72,3 +72,20 @@ function getVerify()
     $captcha->useNoise = false;  //不添加杂点
     return $captcha->entry();
 }
+
+
+/**
+ * 校验验证码
+ * @param $verify
+ * @return bool+
+ */
+function checkVerify($verify)
+{
+    $captcha = new \think\captcha\Captcha();
+    $result=$captcha->check($verify);
+    if($result === false){
+        return false;
+    }else{
+        return true;
+    }
+}

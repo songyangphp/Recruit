@@ -108,9 +108,9 @@
                 </div>
                 <div class="fm-item pos-r">
                     <label for="logonId" class="form-label">验证码</label>
-                    <input type="text"  maxlength="100" name="yzm" id="yzm" class="i-text yzm" required />
+                    <input type="text"  maxlength="100" id="yzm" name="verify" class="i-text yzm" required />
                     <div class="ui-form-explain">
-                        <img src="__IMAGE__/yzm.jpg" class="yzm-img" />
+                        <div class="ui-form-explain"><img src="{:url('Register/verify')}" alt="" class="yzm-img" onclick="this.src=this.src+'?'"/>  </div>
                     </div>
                 </div>
                 <div class="fm-item">

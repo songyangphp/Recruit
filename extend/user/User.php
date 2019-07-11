@@ -12,10 +12,15 @@ use think\Db;
 
 class User
 {
-    public static function userRegister($idcard, $password, $repassword, &$msg = '')
+    public static function userRegister($idcard, $password, $repassword, $verify, &$msg = '')
     {
-        if(empty($idcard) || empty($password) || empty($repassword)){
+        if(empty($idcard) || empty($password) || empty($repassword) || empty($verify)){
             $msg = '参数错误！';
+            return false;
+        }
+
+        if(!checkVerify($verify)){
+            $msg = '验证码错误';
             return false;
         }
 
@@ -38,10 +43,15 @@ class User
         return $register = Db::name('user')->insertGetId($ins_data);
     }
 
-    public static function userLogin($idcard, $password, &$msg = '')
+    public static function userLogin($idcard, $password, $verify, &$msg = '')
     {
-        if(empty($idcard) || empty($password)){
+        if(empty($idcard) || empty($password) || empty($verify)){
             $msg = '参数错误';
+            return false;
+        }
+
+        if(!checkVerify($verify)){
+            $msg = '验证码错误！';
             return false;
         }
 

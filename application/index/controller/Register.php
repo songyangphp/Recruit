@@ -14,6 +14,11 @@ use think\Controller;
 
 class Register extends Controller
 {
+    public function verify()
+    {
+        return getVerify();
+    }
+
     public function index()
     {
         return $this->fetch('register/index');
@@ -24,9 +29,10 @@ class Register extends Controller
         $idcard = $this->request->param('username/s','','trim');
         $pass = $this->request->param('password/s','','trim');
         $repass = $this->request->param('repassword/s','','trim');
+        $verify = $this->request->param('verify/s','','trim');
 
         $msg = '';
-        if(!User::userRegister($idcard,$pass,$repass,$msg)){
+        if(!User::userRegister($idcard,$pass,$repass,$verify,$msg)){
             $this->error($msg);
         }else{
             $this->success($msg,url('Login/index'));

@@ -29,9 +29,10 @@ class Login extends Controller
     {
         $idcard = $this->request->param('username/s','','trim');
         $password = $this->request->param('password/s','','trim');
+        $verify = $this->request->param('verify/s','','trim');
 
         $msg = '';
-        if(!$login = User::userLogin($idcard,$password,$msg)){
+        if(!$login = User::userLogin($idcard,$password,$verify,$msg)){
             $this->error($msg);
         }else{
             Session::set('uid',$login['id']);
