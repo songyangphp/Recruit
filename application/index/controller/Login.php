@@ -11,6 +11,7 @@ namespace app\index\controller;
 
 use think\Controller;
 use extend\user\User;
+use think\Session;
 
 class Login extends Controller
 {
@@ -33,6 +34,7 @@ class Login extends Controller
         if(!$login = User::userLogin($idcard,$password,$msg)){
             $this->error($msg);
         }else{
+            Session::set('uid',$login['id']);
             $this->success($msg,url('Home/index'));
         }
     }
