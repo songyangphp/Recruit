@@ -8,8 +8,10 @@
 
 namespace app\index\controller;
 
-
-class Home
+class Home extends Base
 {
-
+    public function index()
+    {
+        var_dump($this->uid);
+    }
 }
