@@ -18,5 +18,7 @@ class Index extends Controller
     public function quit()
     {
         Session::delete('uid');
+        $this->redirect("Login/index");
+        exit;
     }
 }

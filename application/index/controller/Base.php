@@ -12,14 +12,14 @@ namespace app\index\controller;
 use think\Controller;
 use think\Request;
 use think\Session;
-
+//test.recruit.com
 class Base extends Controller
 {
     protected $uid = 0;
 
     public function __construct(Request $request = null)
     {
-        $this->uid = Session::get('uid');
+        $this->uid = (int)Session::get('uid');
         if(empty($this->uid)){
             $this->redirect(url('Login/index'));
         }

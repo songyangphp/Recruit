@@ -1,135 +1,60 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>系统登录</title>
-	<link href="__CSS__/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
-	<link href="__CSS__/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
-	<script type="text/javascript" src="__JS__/jquery1.42.min.js"></script>
-	<script type="text/javascript" src="__JS__/jquery.SuperSlide.js"></script>
-	<script type="text/javascript" src="__JS__/Validform_v5.3.2_min.js"></script>
-	<style>
-		.btn-login{ width:242px; height:38px; background:url("__IMAGE__/login-btn.png") no-repeat; border:none; margin-top:5px;}
-	</style>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>后台登录</title>
+		<link rel="stylesheet" type="text/css" href="__LAYUI__/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="__CSS__/login.css" />
+	</head>
 
-	<script>
-		$(function(){
-
-			$(".i-text").focus(function(){
-				$(this).addClass('h-light');
-			});
-
-			$(".i-text").focusout(function(){
-				$(this).removeClass('h-light');
-			});
-
-			$("#username").focus(function(){
-				var username = $(this).val();
-				if(username=='输入账号'){
-					$(this).val('');
-				}
-			});
-
-			$("#username").focusout(function(){
-				var username = $(this).val();
-				if(username==''){
-					$(this).val('输入账号');
-				}
-			});
-
-
-			$("#password").focus(function(){
-				var username = $(this).val();
-				if(username=='输入密码'){
-					$(this).val('');
-				}
-			});
-
-
-			$("#yzm").focus(function(){
-				var username = $(this).val();
-				if(username=='输入验证码'){
-					$(this).val('');
-				}
-			});
-
-			$("#yzm").focusout(function(){
-				var username = $(this).val();
-				if(username==''){
-					$(this).val('输入验证码');
-				}
-			});
-
-			/*$(".registerform").Validform({
-				tiptype:function(msg,o,cssctl){
-					var objtip=$(".error-box");
-					cssctl(objtip,o.type);
-					objtip.text(msg);
-				},
-				ajaxPost:true
-			});*/
-
-		});
-	</script>
-</head>
-<body>
-<div class="header">
-	<h1 class="headerLogo"><a title="后台管理系统" target="_blank" href="#"><img alt="logo" src="__IMAGE__/logo.gif" /></a></h1>
-	<div class="headerNav">
-		<a target="_blank" href="#">企业官网</a>
-		<a target="_blank" href="#">关于我们</a>
-		<a target="_blank" href="#">开发团队</a>
-		<a target="_blank" href="#">意见反馈</a>
-		<a target="_blank" href="#">帮助</a>
-	</div>
-</div>
-
-<div class="banner">
-	<div class="login-aside">
-		<div id="o-box-up"></div>
-		<div id="o-box-down" style="table-layout:fixed;">
-			<div class="error-box"></div>
-			<form class="registerform" action="{:url('login')}" method="post">
-				<div class="fm-item">
-					<label for="logonId" class="form-label">身份证号：</label>
-					<input type="text" maxlength="100" id="username" name="username" class="i-text" datatype="s6-18" errormsg="用户名至少6个字符,最多18个字符！" required />
-					<div class="ui-form-explain"></div>
+	<body>
+		<div class="m-login-bg">
+			<div class="m-login">
+				<h3>后台系统登录</h3>
+				<div class="m-login-warp">
+					<form class="" action="{:url('Login/Login')}">
+						<div class="layui-form-item">
+							<input type="text" name="username" required lay-verify="required" placeholder="身份证号" autocomplete="off" class="layui-input">
+						</div>
+						<div class="layui-form-item">
+							<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+						</div>
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<input type="text" name="verify" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+							</div>
+							<div class="layui-inline">
+								<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="{:url('Login/verify')}" />
+							</div>
+						</div>
+						<div class="layui-form-item m-login-btn">
+							<div class="layui-inline">
+								<button class="layui-btn layui-btn-normal" lay-submit lay-filter="login">登录</button>
+							</div>
+							<div class="layui-inline">
+								<button type="reset" class="layui-btn layui-btn-primary">取消</button>
+							</div>
+						</div>
+					</form>
 				</div>
-				<div class="fm-item">
-					<label for="logonId" class="form-label">登陆密码：</label>
-					<input type="password" value="" maxlength="100" name="password" id="password" class="i-text" datatype="*6-16"  errormsg="密码范围在6~16位之间！"  required />
-					<div class="ui-form-explain"></div>
-				</div>
-				<div class="fm-item pos-r">
-					<label for="logonId" class="form-label">验证码</label>
-					<input type="text"  maxlength="100" id="yzm" name="verify" class="i-text yzm" required />
-					<div class="ui-form-explain">
-						<div class="ui-form-explain"><img src="{:url('Login/verify')}" alt="" class="yzm-img" onclick="this.src=this.src+'?'"/>  </div>
-					</div>
-				</div>
-				<div class="fm-item">
-					<label for="logonId" class="form-label"></label>
-					<input type="submit" value="" tabindex="4" id="send-btn" class="btn-login" />
-					<div class="ui-form-explain"></div>
-				</div>
-				<br>
-				<a href="{:url('Register/index')}">还没有账号？点击立即注册！</a>
-			</form>
+				<p class="copyright">Copyright 2015-2016 by XIAODU</p>
+			</div>
 		</div>
-	</div>
-	<div class="bd">
-		<ul>
-			<li style="background:url(__IMAGE__/theme-pic1.jpg) #CCE1F3 center 0 no-repeat;"><a target="_blank" ></a></li>
-			<li style="background:url(__IMAGE__/theme-pic2.jpg) #BCE0FF center 0 no-repeat;"><a target="_blank" ></a></li>
-		</ul>
-	</div>
-	<div class="hd">
-		<ul></ul>
-	</div>
-</div>
-<script type="text/javascript">jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
-<div class="banner-shadow"></div>
-<div class="footer">
-	<p>Copyright &copy; 2014.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-</div>
-</body>
+		<script src="__LAYUI__/layui.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			layui.use(['form', 'layedit', 'laydate'], function() {
+				var form = layui.form(),
+					layer = layui.layer;
+				//监听提交
+				/*form.on('submit(login)', function(data) {
+					layer.alert(JSON.stringify(data.field), {
+						title: '最终的提交信息'
+					});
+					return false;
+				});*/
+			});
+		</script>
+	</body>
+
 </html>

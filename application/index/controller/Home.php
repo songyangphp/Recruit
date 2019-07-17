@@ -12,6 +12,11 @@ class Home extends Base
 {
     public function index()
     {
-        var_dump($this->uid);
+        return $this->fetch();
+    }
+
+    public function welcome()
+    {
+        return $this->fetch();
     }
 }

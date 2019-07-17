@@ -82,7 +82,7 @@ function getVerify()
 function checkVerify($verify)
 {
     $captcha = new \think\captcha\Captcha();
-    $result=$captcha->check($verify);
+    $result = $captcha->check($verify);
     if($result === false){
         return false;
     }else{

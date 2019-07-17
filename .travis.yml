@@ -16,7 +16,7 @@ before_install:
 install:
   - composer install --no-dev --no-interaction --ignore-platform-reqs
   - zip -r --exclude='*.git*' --exclude='*.zip' --exclude='*.travis.yml' ThinkPHP_Core.zip .
-  - composer require --update-no-dev --no-interaction "topthink/think-image:^1.0"
+  - composer require --update-no-dev --no-interaction "topthink/think-images:^1.0"
   - composer require --update-no-dev --no-interaction "topthink/think-migration:^1.0"
   - composer require --update-no-dev --no-interaction "topthink/think-captcha:^1.0"
   - composer require --update-no-dev --no-interaction "topthink/think-mongo:^1.0"

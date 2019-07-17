@@ -145,12 +145,15 @@ $config = [
     // 视图输出字符串内容替换
     'view_replace_str'       => [
         '__ROOT__' => WEB_HOST,
-        '__JS__' => WEB_HOST . 'static/js',
-        '__CSS__' => WEB_HOST . 'static/css',
-        '__IMAGE__' => WEB_HOST . 'static/image',
+        '__JS__' => WEB_HOST . 'static/admin/js',
+        '__CSS__' => WEB_HOST . 'static/admin/css',
+        '__IMAGE__' => WEB_HOST . 'static/admin/images',
         '__UPLOAD__'=> WEB_HOST . 'upload',
+        '__LAYUI__' => WEB_HOST . 'static/admin/layui',
+        '__FONT__' => WEB_HOST . 'static/admin/font',
+        '__LESS__' => WEB_HOST . 'static/admin/less',
+        '__LIB__' => WEB_HOST . 'static/admin/lib'
     ],
-
 
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
