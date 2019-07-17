@@ -16,44 +16,18 @@
 				<div class="m-logo">
 				</div>
 				<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
-				  <li class="layui-nav-item layui-nav-itemed">
-				    <a href="javascript:;">菜单管理</a>
-				    <dl class="layui-nav-child">
-				      <dd><a href="javascript:;" data-url="{:url('Menu/index')}" data-id='1' data-text="后台菜单"><span class="l-line"></span>后台菜单</a></dd>
-				      <dd><a href="javascript:;" data-url="menu2.html" data-id='2' data-text="前台菜单"><span class="l-line"></span>前台菜单</a></dd>
-				    </dl>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;">内容管理</a>
-				    <dl class="layui-nav-child">
-				      <dd><a href="javascript:;" data-url="article-list.html" data-id='3' data-text="文章管理"><span class="l-line"></span>文章管理</a></dd>
-				      <dd><a href="javascript:;" data-url="danye-list.html" data-id='9' data-text="单页管理"><span class="l-line"></span>单页管理</a></dd>
-				    </dl>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;">推荐位管理</a>
-				  </li>
-				   <li class="layui-nav-item">
-				    <a href="javascript:;">友情链接</a>
-				  </li>
-				   <li class="layui-nav-item">
-				    <a href="javascript:;">RBAC</a>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统">邮件系统</a>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;">生成静态</a>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;">备份管理</a>
-				  </li>
-				  <li class="layui-nav-item">
-				    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">个人信息</a>
-				  </li>
-				  <li class="layui-nav-item">
-				  	<a href="javascript:;" data-url="system.html" data-id='6' data-text="系统设置">系统设置</a>
-				  </li>
+					{foreach name="menu" item="vo"}
+					  <li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;" data-url="{$vo.url}" data-id='{$vo.id}' data-text="邮件系统">{$vo.name}</a>
+						  <?php if(!empty($vo['son'])){ ?>
+							<dl class="layui-nav-child">
+								{foreach name="vo.son" item="v"}
+								<dd><a href="javascript:;" data-url="{$v.url}" data-id='{$v.id}' data-text="后台菜单"><span class="l-line"></span>{$v.name}</a></dd>
+								{/foreach}
+							</dl>
+						  <?php } ?>
+					  </li>
+					{/foreach}
 				</ul>
 			</div>
 			<!--右侧内容-->
@@ -66,11 +40,11 @@
 						</a>
 					</div>
 					<ul class="layui-nav" lay-filter="rightNav">
-					  <li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>
+					  <!--<li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>-->
 					  <li class="layui-nav-item">
 					    <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">超级管理员</a>
 					  </li>
-					  <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+					  <li class="layui-nav-item"><a href="{:url('Index/quit')}">退出</a></li>
 					</ul>
 				</div>
 				<!--主体内容-->
