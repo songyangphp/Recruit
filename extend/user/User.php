@@ -9,6 +9,7 @@
 namespace extend\user;
 
 use think\Db;
+use think\Session;
 
 class User
 {
@@ -64,6 +65,7 @@ class User
             $msg = '密码错误！';
             return false;
         }else{
+            Session::set('uid',$has['id']);
             $msg = '登录成功';
             return $has;
         }

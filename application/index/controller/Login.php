@@ -35,7 +35,6 @@ class Login extends Controller
         if(!$login = User::userLogin($idcard,$password,$verify,$msg)){
             $this->error($msg);
         }else{
-            Session::set('uid',$login['id']);
             $this->redirect(url('Home/index'));
         }
     }
