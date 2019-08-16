@@ -77,7 +77,7 @@ function getVerify()
 /**
  * 校验验证码
  * @param $verify
- * @return bool+
+ * @return bool
  */
 function checkVerify($verify)
 {

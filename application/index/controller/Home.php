@@ -28,7 +28,7 @@ class Home extends Base
             [
                 "id" => 3,
                 "name" => "邮件管理",
-                "url" => "__APP__",
+                "url" => "",
                 "son" => []
             ]
         ];

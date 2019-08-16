@@ -22,7 +22,7 @@ class Login extends Controller
 
     public function index()
     {
-        return $this->fetch();
+        return $this->fetch('login/index');
     }
 
     public function Login()
@@ -36,7 +36,7 @@ class Login extends Controller
             $this->error($msg);
         }else{
             Session::set('uid',$login['id']);
-            $this->success($msg,url('Home/index'));
+            $this->redirect(url('Home/index'));
         }
     }
 }
