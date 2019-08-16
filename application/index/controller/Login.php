@@ -32,7 +32,7 @@ class Login extends Controller
         $verify = $this->request->param('verify/s','','trim');
 
         $msg = '';
-        if(!$login = User::userLogin($idcard,$password,$verify,$msg)){
+        if(!User::userLogin($idcard,$password,$verify,$msg)){
             $this->error($msg);
         }else{
             $this->redirect(url('Home/index'));
