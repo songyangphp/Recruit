@@ -11,7 +11,6 @@ namespace app\index\controller;
 
 use think\Controller;
 use extend\user\User;
-use think\Session;
 
 class Login extends Controller
 {

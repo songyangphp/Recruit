@@ -8,33 +8,32 @@
 
 namespace app\index\controller;
 
+use think\Db;
+
 class Home extends Base
 {
     public function index()
     {
-        $menu = [
-            [
-                "id" => 1,
-                "name" => "菜单管理",
-                "url" => "__APP__",
-                "son" => [
-                    [
-                        "id" => 2,
-                        "name" => "前台菜单管理",
-                        "url" => url('Menu/index'),
-                    ]
-                ]
-            ],
-            [
-                "id" => 3,
-                "name" => "邮件管理",
-                "url" => "",
-                "son" => []
-            ]
-        ];
-
+        $nodes = Db::name("user_role")->where("id",$this->role_id)->value('node_ids');
+        $menu = Db::name("node")->where("id","in",$nodes)->select();
+        $menu = $this->getTree($menu,0,0);
         $this->assign("menu",$menu);
+
         return $this->fetch();
+    }
+
+    private function getTree($arr, $id, $level){
+        $list = [];
+
+        foreach ($arr as $k => $v) {
+            if ($v['pid'] == $id) {
+                $v['level'] = $level;
+                $v['son'] = $this->getTree($arr, $v['id'], $level + 1);
+                $list[] = $v;
+            }
+        }
+
+        return $list;
     }
 
     public function welcome()

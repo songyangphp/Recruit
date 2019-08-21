@@ -9,9 +9,7 @@
 namespace app\index\controller;
 
 
-use think\Controller;
-
-class Menu extends Controller
+class Menu extends Base
 {
     public function index()
     {
