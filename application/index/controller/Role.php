@@ -2,22 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: Administrator
- * Date: 2019-07-17
- * Time: 15:59
+ * Date: 2019-08-21
+ * Time: 14:36
  */
 
 namespace app\index\controller;
 
 
-class Menu extends Base
+class Role extends Base
 {
     public function index()
     {
-        echo 111;
-    }
 
-    public function nav()
-    {
-        echo 222;
     }
 }

@@ -44,9 +44,9 @@ class User
         return $register = Db::name('user')->insertGetId($ins_data);
     }
 
-    public static function userLogin($idcard, $password, $verify, &$msg = '')
+    public static function userLogin($username, $password, $verify, &$msg = '')
     {
-        if(empty($idcard) || empty($password) || empty($verify)){
+        if(empty($username) || empty($password) || empty($verify)){
             $msg = '参数错误';
             return false;
         }
@@ -56,7 +56,9 @@ class User
             return false;
         }
 
-        if(!$has = Db::name('user')->where('idcard',$idcard)->find()){
+        $has = Db::name('user')->where("username|phone|email",'EQ',$username)->find();
+
+        if(!$has){
             $msg = '该用户尚未注册';
             return false;
         }
