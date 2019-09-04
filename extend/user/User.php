@@ -13,9 +13,9 @@ use think\Session;
 
 class User
 {
-    public static function userRegister($idcard, $password, $repassword, $verify, &$msg = '')
+    public static function userRegister($username, $password, $repassword, $verify, &$msg = '')
     {
-        if(empty($idcard) || empty($password) || empty($repassword) || empty($verify)){
+        if(empty($username) || empty($password) || empty($repassword) || empty($verify)){
             $msg = '参数错误！';
             return false;
         }
@@ -30,16 +30,16 @@ class User
             return false;
         }
 
-        if(!isCreditNo($idcard)){
+        if(!isCreditNo($username)){
             $msg = '请输入正确的身份证号！';
             return false;
         }
 
-        if($has = Db::name('user')->where('idcard',$idcard)->find()){
+        if($has = Db::name('user')->where('username',$username)->find()){
             $msg = '该用户已注册！';
             return false;
         }
-        $ins_data = ['idcard' => $idcard, 'password' => mkPassword($password), 'addtime' => time()];
+        $ins_data = ['idcard' => $username, 'password' => mkPassword($password), 'addtime' => time()];
         $msg = '注册成功，即将跳转登录页！';
         return $register = Db::name('user')->insertGetId($ins_data);
     }
