@@ -15,9 +15,10 @@ class Home extends Base
 {
     public function index()
     {
-        Cache::set('aaa',[1,2,3]);
-        $aaa = Cache::get('aaa');
-        dump($aaa);die;
+        /*$ywid = 1;
+        Cache::set($ywid."user" , [1,2,3]);
+        $aaa = Cache::get($ywid."user");
+        dump($aaa);die;*/
         $nodes = Db::name("user_role")->where("id",$this->role_id)->value('node_ids');
         $menu = Db::name("node")->where("id","in",$nodes)->select();
         $menu = $this->getTree($menu,0,0);
