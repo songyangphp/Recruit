@@ -13,11 +13,11 @@ use extend\cache\driver\Idriver;
 
 class Cache
 {
-    const DRIVER = 'Redis';
+    const DRIVER = 'Redis'; //memcache redis mysql file
 
-    public static $_cache_driver;
+    private static $_cache_driver;
 
-    public static function getInstance(Idriver $driver)
+    private static function getInstance(Idriver $driver)
     {
         if(self::$_cache_driver instanceof Idriver){
             return self::$_cache_driver;
