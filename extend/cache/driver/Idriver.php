@@ -11,7 +11,7 @@ namespace extend\cache\driver;
 
 interface Idriver
 {
-    public function set($name,$value);
+    public function set($name,$value,$cover);
 
     public function get($name);
 }

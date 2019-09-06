@@ -26,10 +26,10 @@ class Cache
         return self::$_cache_driver = (new $driver);
     }
 
-    public static function set($name, $value)
+    public static function set($name, $value, $cover = true)
     {
         switch (self::DRIVER){
-            case 'Redis' : return self::getInstance(new \extend\cache\driver\Redis())->set($name, $value); break ;
+            case 'Redis' : return self::getInstance(new \extend\cache\driver\Redis())->set($name, $value, $cover); break ;
             default : exit('无此驱动') ;
         }
     }
