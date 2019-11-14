@@ -72,4 +72,14 @@ class User
             return $has;
         }
     }
+
+    public static function getUserRealNameByUid($uid)
+    {
+        return self::getUserByUid($uid)['name'];
+    }
+
+    private static function getUserByUid($uid)
+    {
+        return Db::name('user')->where("id = {$uid}")->find();
+    }
 }

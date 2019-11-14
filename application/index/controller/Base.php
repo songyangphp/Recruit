@@ -8,11 +8,12 @@
 
 namespace app\index\controller;
 
-
+use extend\user\User;
+use extend\user\Role;
 use think\Controller;
-use think\Db;
 use think\Request;
 use think\Session;
+
 //test.recruit.com
 class Base extends Controller
 {
@@ -20,6 +21,7 @@ class Base extends Controller
 
     protected $role_id = 0;
     protected $role_name = null;
+    protected $user_name = null;
 
     public function __construct(Request $request = null)
     {
@@ -27,16 +29,15 @@ class Base extends Controller
         if(empty($this->uid)){
             $this->redirect(url('Login/index'));
         }
-
-        $this->initRole($this->uid);
+        $this->user_name = User::getUserRealNameByUid($this->uid);
+        $this->initRole();
         parent::__construct($request);
     }
 
-    private function initRole($uid)
+    private function initRole()
     {
-        $role_id = Db::name("user")->where("id",$uid)->value("role_id");
-        $this->role_id = $role_id;
-        $role_name = Db::name("user_role")->where("id",$this->role_id)->value("name");
-        $this->role_name = $role_name;
+        $role = Role::getRoleByUid($this->uid);
+        $this->role_id = $role['id'];
+        $this->role_name = $role['name'];
     }
 }
